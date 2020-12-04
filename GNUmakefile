@@ -38,6 +38,9 @@ codecs:
 ### The -% suffix in the targets below map to the dockerfiles in downstream/
 ###
 
+# Build a list of distributions present in downstream/
+DOWNSTREAM_IMAGES=$(shell ls downstream/*.Dockerfile | xargs -n1 -I'{}' basename '{}' .Dockerfile)
+
 build-%:
 	docker build \
 		-t $(IMAGE_NAME):downstream-$* \
@@ -48,7 +51,12 @@ version-%:
 	@echo $*:
 	@docker run --rm -it $(IMAGE_NAME):downstream-$* -version | grep ^ffmpeg
 
-versions: version version-debian version-ubuntu-lts version-ubuntu version-alpine
+versions: version $(addprefix version-,$(DOWNSTREAM_IMAGES))
+
+pull-distro-%:
+	docker pull $(IMAGE_NAME):downstream-$*
+
+pull-distros: $(addprefix pull-distro-,$(DOWNSTREAM_IMAGES))
 
 codecs-%:
 	docker run --rm -it \
