@@ -15,6 +15,19 @@ For Linux distributions where the included FFmpeg package isn't compiled with no
 
 This image pulls [Deb Multimedia][deb-multimedia]'s ffmpeg package, which includes codecs such as *Fraunhofer FDK AAC* (aka `libfdk_aac`, [the highest-quality AAC encoder in FFmpeg as of this writing][encode_aac]), missing from most compilations.
 
+## Script installation
+
+You can install and uninstall the script with the included makefile for easy access to the image's ffmpeg.
+\
+That's all you need to do, running the script will pull the image if required.
+
+```shell
+$ sudo make install
+$ ffmpeg-nonfree-docker [...]
+```
+
+You may uninstall it with `sudo make uninstall`.
+
 ## A comparison of included codecs
 
 Note the included makefile eases such comparisons (for a selection of codecs).
