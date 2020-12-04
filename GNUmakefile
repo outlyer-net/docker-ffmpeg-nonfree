@@ -29,7 +29,7 @@ version:
 
 # Print the list of included codecs
 codecs:
-	docker run --rm -it $(IMAGE_NAME) ffmpeg -codecs
+	docker run --rm -it $(IMAGE_NAME) -codecs
 
 ###
 ### Targets aimed at comparing the differences between distributions' ffmpeg
