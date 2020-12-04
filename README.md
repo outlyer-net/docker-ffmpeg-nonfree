@@ -1,3 +1,10 @@
+<!-- shields.io -->
+[![Docker Image Size (latest by date)][badge_image_size]][dockerhub]
+[![Docker Cloud Build Status][badge_cloud_build_status]][dockerhub]
+[![MicroBadger Layers][badge_microbadger_layers]][microbadger]
+[![GitHub last commit][badge_github_last_commit]][github_commits]
+[![MIT License][badge_github_license]][github_license]
+
 # FFmpeg non-free in Docker
 
 A dockerized [FFmpeg] compiled with non-free codecs in.
@@ -73,3 +80,15 @@ ffmpeg version 4.3.1 Copyright (c) 2000-2020 the FFmpeg developers
 
 [github]:    https://github.com/outlyer-net/docker-ffmpeg-nonfree
 [dockerhub]: https://hub.docker.com/repository/docker/outlyernet/ffmpeg-nonfree
+
+[microbadger]:    https://microbadger.com/images/outlyernet/ffmpeg-nonfree
+[github_commits]: https://github.com/outlyer-net/docker-ffmpeg-nonfree/commits/master
+[github_license]: https://github.com/outlyer-net/docker-ffmpeg-nonfree/blob/master/LICENSE
+
+<!-- Aliases for images -->
+
+[badge_image_size]:         https://img.shields.io/docker/image-size/outlyernet/ffmpeg-nonfree
+[badge_cloud_build_status]: https://img.shields.io/docker/cloud/build/outlyernet/ffmpeg-nonfree
+[badge_microbadger_layers]: https://img.shields.io/microbadger/layers/outlyernet/ffmpeg-nonfree
+[badge_github_last_commit]: https://img.shields.io/github/last-commit/outlyer-net/docker-ffmpeg-nonfree
+[badge_github_license]:     https://img.shields.io/github/license/outlyer-net/docker-ffmpeg-nonfree
