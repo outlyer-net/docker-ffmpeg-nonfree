@@ -4,7 +4,7 @@
 # As of this writing:
 #  - deb-multimedia's stable (Buster) has ffmpeg v4.1.6
 #  - deb-multimedia's testing (Bullseye) has ffmpeg v4.3.1
-FROM debian:stable
+FROM debian:stable-slim
 
 # Standard(ish) labels/annotations (org.opencontainers.*) <https://github.com/opencontainers/image-spec/blob/master/annotations.md>
 LABEL maintainer="Toni Corvera <outlyer@gmail.com>" \
