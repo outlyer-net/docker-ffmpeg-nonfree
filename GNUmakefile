@@ -32,6 +32,32 @@ codecs:
 	docker run --rm -it $(IMAGE_NAME) -codecs
 
 ###
+### Image/registry maintenance
+###
+
+pull:
+	docker image pull $(IMAGE_NAME):latest
+
+# Tag the image with relevant data:
+#  1. Timestamp from the base Debian Testing image
+#  2. ffmpeg package version
+# debian:testing-slim has additional timestamp-based tags, e.g. testing-20201117-slim
+# https://hub.docker.com/_/debian?tab=tags&page=1&ordering=last_updated
+#  matching their build date. The timestamp of files coming from it can be used
+BASEIMAGE_TIMESTAMP=$(shell docker run --rm -it \
+		--entrypoint stat $(IMAGE_NAME) /usr --format='%y' \
+		| awk '{print $$1}' \
+		| sed 's/-//g')
+FFMPEG_VERSION=$(shell docker run --rm -it \
+		--entrypoint dpkg $(IMAGE_NAME) -s ffmpeg \
+		| grep ^Version: \
+		| cut -d: -f3)
+
+# tag the image with the base debian tag
+tag-snapshot: pull
+	tag $(IMAGE_NAME):latest $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
+
+###
 ### Targets aimed at comparing the differences between distributions' ffmpeg
 ### and this image's
 ###
