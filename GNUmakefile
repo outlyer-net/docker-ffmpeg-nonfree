@@ -14,11 +14,8 @@ all: build
 build:
 	docker build -t $(IMAGE_NAME) .
 
-install:
-	mkdir -p "$(shell dirname "$(binname)")"
-	echo '#!/bin/sh' > $(binname)
-	echo 'exec docker run --rm -it $(IMAGE_NAME) "$$@"' >> $(binname)
-	chmod 0755 $(binname)
+install: wrapper.sh
+	install -m755 wrapper.sh $(binname)
 
 uninstall:
 	$(RM) $(binname)

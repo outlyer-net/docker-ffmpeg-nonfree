@@ -15,11 +15,11 @@ For Linux distributions where the included FFmpeg package isn't compiled with no
 
 This image pulls [Deb Multimedia][deb-multimedia]'s ffmpeg package, which includes codecs such as *Fraunhofer FDK AAC* (aka `libfdk_aac`, [the highest-quality AAC encoder in FFmpeg as of this writing][encode_aac]), missing from most compilations.
 
-## Script installation
+## Wrapper script installation
 
-You can install and uninstall the script with the included makefile for easy access to the image's ffmpeg.
+You can install and uninstall a wrapper script with the included makefile for easy access to the image's ffmpeg.
 \
-That's all you need to do, running the script will pull the image if required.
+Running the script will pull the image if required.
 
 ```shell
 $ sudo make install
@@ -27,6 +27,17 @@ $ ffmpeg-nonfree-docker [...]
 ```
 
 You may uninstall it with `sudo make uninstall`.
+
+**NOTE**: The script will mount the host's filesystem as `/host` and run from the invoking directory. Additionally `/home` will also be mounted as simply `/home`.
+\
+Referencing files with relative paths should work without any extra parameter whereas absolute paths should be prepended by `/host` unless they're under `/home`.
+
+```shell
+$ ffmpeg-nonfree-docker -i input_file               # Access ./input_file from the host
+$ ffmpeg-nonfree-docker -i ../input_file            # Access ../input_file from the host
+$ ffmpeg-nonfree-docker -i /home/user/input_file    # Access /home/user/input_file from the host
+$ ffmpeg-nonfree-docker -i /host/path/to/input_file # Access /path/to/input_file from the host
+```
 
 ## A comparison of included codecs
 
