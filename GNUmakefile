@@ -52,7 +52,7 @@ FFMPEG_VERSION=$(shell docker run --rm -it \
 
 # tag the image with the base debian tag
 tag-snapshot: pull
-	tag $(IMAGE_NAME):latest $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
+	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
 
 ###
 ### Targets aimed at comparing the differences between distributions' ffmpeg
