@@ -124,8 +124,8 @@ ffmpeg version 4.2.4-1ubuntu0.1 Copyright (c) 2000-2020 the FFmpeg developers
 
 <!-- Aliases for images -->
 
-[badge_image_size]:         https://img.shields.io/docker/image-size/outlyernet/ffmpeg-nonfree
+[badge_image_size]:         https://img.shields.io/docker/image-size/outlyernet/ffmpeg-nonfree/latest
 [badge_cloud_build_status]: https://img.shields.io/docker/cloud/build/outlyernet/ffmpeg-nonfree
-[badge_microbadger_layers]: https://img.shields.io/microbadger/layers/outlyernet/ffmpeg-nonfree
+[badge_microbadger_layers]: https://img.shields.io/microbadger/layers/outlyernet/ffmpeg-nonfree:latest
 [badge_github_last_commit]: https://img.shields.io/github/last-commit/outlyer-net/docker-ffmpeg-nonfree
 [badge_github_license]:     https://img.shields.io/github/license/outlyer-net/docker-ffmpeg-nonfree
