@@ -18,17 +18,17 @@ build:
 install: wrapper.sh
 	mkdir -p $(bindir)
 	for binary in $(BINARIES); do \
-		install -m755 wrapper.sh $(bindir)/$$binary-ffmpeg-nonfree ; \
-		sed -i "s/BINARY=ffmpeg/BINARY=$$binary/" $(bindir)/$$binary-ffmpeg-nonfree ; \
+		install -m755 wrapper.sh $(bindir)/$$binary-nonfree-docker ; \
+		sed -i "s/BINARY=ffmpeg/BINARY=$$binary/" $(bindir)/$$binary-nonfree-docker ; \
 	done
 
 install-shortnames: install
 	for binary in $(BINARIES); do \
-		ln -s $$binary-ffmpeg-nonfree $(bindir)/$$binary ; \
+		ln -s $$binary-nonfree-docker $(bindir)/$$binary ; \
 	done
 
 uninstall:
-	$(RM) $(addprefix $(bindir)/,$(addsuffix -ffmpeg-nonfree,$(BINARIES)))
+	$(RM) $(addprefix $(bindir)/,$(addsuffix -nonfree-docker,$(BINARIES)))
 
 uninstall-shortnames: uninstall
 	$(RM) $(addprefix $(bindir)/,$(BINARIES))
