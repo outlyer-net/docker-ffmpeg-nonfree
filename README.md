@@ -26,6 +26,13 @@ $ sudo make install
 $ ffmpeg-nonfree-docker [...]
 ```
 
+You may additionally install symbolic links without the `-nonfree-docker` suffix:
+
+```shell
+$ sudo make install-shortnames
+$ ffmpeg [...]
+```
+
 You may uninstall it with `sudo make uninstall`.
 
 **NOTE**: The script will mount the host's filesystem as `/host` and run from the invoking directory. Additionally `/home` will also be mounted as simply `/home`.

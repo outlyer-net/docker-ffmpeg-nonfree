@@ -22,6 +22,11 @@ install: wrapper.sh
 		sed -i "s/BINARY=ffmpeg/BINARY=$$binary/" $(bindir)/$$binary-ffmpeg-nonfree ; \
 	done
 
+install-shortnames: install
+	for binary in $(BINARIES); do \
+		ln -s $$binary-ffmpeg-nonfree $(bindir)/$$binary ; \
+	done
+
 uninstall:
 	$(RM) $(ffmpeg_bin)
 
