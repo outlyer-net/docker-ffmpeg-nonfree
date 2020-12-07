@@ -28,7 +28,10 @@ install-shortnames: install
 	done
 
 uninstall:
-	$(RM) $(ffmpeg_bin)
+	$(RM) $(addprefix $(bindir)/,$(addsuffix -ffmpeg-nonfree,$(BINARIES)))
+
+uninstall-shortnames: uninstall
+	$(RM) $(addprefix $(bindir)/,$(BINARIES))
 
 # Print ffmpeg version and quit
 version:
