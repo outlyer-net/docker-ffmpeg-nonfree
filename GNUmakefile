@@ -3,7 +3,8 @@ IMAGE_NAME=$(IMAGE_NAMESPACE)/ffmpeg-nonfree
 DESTDIR:=
 prefix:=/usr/local
 
-binname:=$(DESTDIR)$(prefix)/bin/ffmpeg-nonfree-docker
+bindir:=$(DESTDIR)$(prefix)/bin
+BINARIES=ffmpeg ffplay ffprobe
 
 ###
 ### Main targets
@@ -15,10 +16,14 @@ build:
 	docker build -t $(IMAGE_NAME) .
 
 install: wrapper.sh
-	install -m755 wrapper.sh $(binname)
+	mkdir -p $(bindir)
+	for binary in $(BINARIES); do \
+		install -m755 wrapper.sh $(bindir)/$$binary-ffmpeg-nonfree ; \
+		sed -i "s/BINARY=ffmpeg/BINARY=$$binary/" $(bindir)/$$binary-ffmpeg-nonfree ; \
+	done
 
 uninstall:
-	$(RM) $(binname)
+	$(RM) $(ffmpeg_bin)
 
 # Print ffmpeg version and quit
 version:
@@ -53,6 +58,9 @@ FFMPEG_VERSION=$(shell docker run --rm -it \
 # tag the image with the base debian tag
 tag-snapshot: pull
 	docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
+
+shell:
+	docker run --rm -it --entrypoint bash $(IMAGE_NAME)
 
 ###
 ### Targets aimed at comparing the differences between distributions' ffmpeg
