@@ -1,5 +1,6 @@
-FROM ubuntu:20.10
-#           note latest maps the LTS, not the current stable
+FROM ubuntu:22.04
+#           note latest maps to the LTS, not necessarily the current stable
+#           22.04 *is* an LTS 
 
 RUN apt-get update \
     &&  DEBIAN_FRONTEND=noninteractive \
