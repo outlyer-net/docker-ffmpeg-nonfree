@@ -122,3 +122,12 @@ compare-codecs-ubuntu-lts-vs-current:
 		<( $(MAKE) codecs-ubuntu-lts ) \
 		<( $(MAKE) codecs-ubuntu )'
 	@echo
+
+###
+### Maintainer-use target
+###
+
+push: build tag-snapshot
+	docker push $(IMAGE_NAME):latest
+	docker push $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
+	docker push $(IMAGE_NAME):$(FFMPEG_VERSION)
