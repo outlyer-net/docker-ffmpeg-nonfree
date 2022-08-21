@@ -82,7 +82,12 @@ shell:
 # Build a list of distributions present in downstream/
 DOWNSTREAM_IMAGES=$(shell ls downstream/*.Dockerfile | xargs -n1 -I'{}' basename '{}' .Dockerfile)
 
+# build all downstream distros
+build-distros: $(addprefix build-,$(DOWNSTREAM_IMAGES))
+
 build-%:
+	@# Avoid attempting to build "distros.Dockerfile"
+	test "$*" = 'distros' || \
 	docker build \
 		-t $(IMAGE_NAME):downstream-$* \
 		-f downstream/$*.Dockerfile \
