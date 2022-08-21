@@ -1,7 +1,6 @@
 <!-- shields.io -->
 [![Docker Image Size (latest by date)][badge_image_size]][dockerhub]
 [![Docker Cloud Build Status][badge_cloud_build_status]][dockerhub]
-[![MicroBadger Layers][badge_microbadger_layers]][microbadger]
 [![GitHub last commit][badge_github_last_commit]][github_commits]
 [![MIT License][badge_github_license]][github_license]
 
