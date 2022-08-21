@@ -65,23 +65,23 @@ Here's an excerpt of some important codecs (I'm only including differences):
 | Codec | Encoder        | this image | Debian | Ubuntu LTS | Ubuntu  | Alpine | Fedora  
 |-------|----------------|------------|--------|------------|---------|--------|---------
 | h.264                                                                                  
-|       | h264_amf      | yes         | no     | no         | no      | no     | no     |
+|       | h264_amf      | yes         | no     | no         | no      | no     | yes    |
 |       | h264_nvenc    | yes         | no     | yes        | yes     | no     | yes    |
-|       | h264_omx      | no          | yes    | yes        | yes     | no     | yes    |
-|       | h264_qsv      | yes         | no     | no         | yes     | no     | yes    |
+|       | h264_omx      | yes         | yes    | yes        | yes     | no     | no     |
+|       | h264_qsv      | yes         | yes    | yes        | yes     | no     | yes    |
 |       | libopenh264   | yes         | no     | no         | no      | no     | no     |
-|       | nvenc         | yes         | no     | yes        | yes     | no     | yes    |
-|       | nvenc_h264    | yes         | no     | yes        | yes     | no     | yes    |
+|       | nvenc         | no          | no     | yes        | yes     | no     | no     |
+|       | nvenc_h264    | no          | no     | yes        | yes     | no     | no     |
 | HEVC                                                                                   
-|       | hevc_amf      | yes         | no     | no         | no      | no     | no     |
+|       | hevc_amf      | yes         | no     | no         | no      | no     | yes    |
 |       | hevc_nvenc    | yes         | no     | yes        | yes     | no     | yes    |
-|       | hevc_qsv      | yes         | no     | no         | yes     | no     | yes    |
+|       | hevc_qsv      | yes         | yes    | yes        | yes     | no     | yes    |
 |       | libkvazaar    | yes         | no     | no         | no      | no     | no     |
-|       | nvenc_hevc    | yes         | no     | yes        | yes     | no     | yes    |
+|       | nvenc_hevc    | no          | no     | yes        | yes     | no     | no     |
 | MJPEG                                                                                  
-|       | mjpeg_qsv     | yes         | no     | no         | yes     | no     | yes    |
+|       | mjpeg_qsv     | yes         | yes    | yes        | yes     | no     | yes    |
 | MPEG-2                                                                                 
-|       | mpeg2_qsv     | yes         | no     | no         | no      | no     | yes    |
+|       | mpeg2_qsv     | yes         | yes    | yes        | no      | no     | yes    |
 | AAC                                                                                    
 |       | libfdk_aac    | yes         | no     | no         | no      | no     | no     |
 
@@ -90,17 +90,17 @@ Versions:
 $ make pull-distros # pull the latest images
 [...]
 $ make versions
-ffmpeg version 4.3.1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 5.1 Copyright (c) 2000-2022 the FFmpeg developers
 alpine:
-ffmpeg version 4.3.1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 5.0.1 Copyright (c) 2000-2022 the FFmpeg developers
 debian:
-ffmpeg version 4.1.6-1~deb10u1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 4.3.4-0+deb11u1 Copyright (c) 2000-2021 the FFmpeg developers
 fedora:
-ffmpeg version 4.3.1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 5.0.1 Copyright (c) 2000-2022 the FFmpeg developers
 ubuntu:
-ffmpeg version 4.3.1-4ubuntu1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
 ubuntu-lts:
-ffmpeg version 4.2.4-1ubuntu0.1 Copyright (c) 2000-2020 the FFmpeg developers
+ffmpeg version 4.4.2-0ubuntu0.22.04.1 Copyright (c) 2000-2021 the FFmpeg developers
 ```
 
 ## Links
