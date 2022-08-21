@@ -136,3 +136,8 @@ push: build tag-snapshot
 	docker push $(IMAGE_NAME):latest
 	docker push $(IMAGE_NAME):debian-testing-$(BASEIMAGE_TIMESTAMP)-ffmpeg-$(FFMPEG_VERSION)
 	docker push $(IMAGE_NAME):$(FFMPEG_VERSION)
+
+push-distro-%:
+	docker push $(IMAGE_NAME):downstream-$*
+
+push-distros: $(addprefix push-distro-,$(DOWNSTREAM_IMAGES))
