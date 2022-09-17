@@ -14,7 +14,7 @@ exec docker run --rm -it \
 	-v /:/host:rw \
 	-v /home:/home:rw \
 	--entrypoint /usr/bin/$BINARY \
-	--workdir /host/$PWD \
+	--workdir "/host/$PWD" \
 	--user $uid:$gid \
 	"$IMAGE_NAME" \
 	"$@"
